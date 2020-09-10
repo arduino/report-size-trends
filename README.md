@@ -37,7 +37,7 @@ Path that contains the JSON formatted sketch data report, as specified to the `a
 1. Click the "Settings" tab.
 1. From the menu on the left side of the window, click "Secrets".
 1. Click the "Add a new secret" link.
-1. In the "Name" field, enter the variable name you want to use for your secret. This will be used for the `size-trends-report-key-file` argument of the `compile-examples` action in your workflow configuration file. For example, if you named the secret `GOOGLE_KEY_FILE`, you would reference it in your workflow configuration as `${{ secrets.GOOGLE_KEY_FILE }}`.
+1. In the "Name" field, enter the variable name you want to use for your secret. This secret is what you will use in the `arduino/report-size-trends` action's `google-key-file` input in your GitHub Actions workflow configuration file. For example, if you named the secret `GOOGLE_KEY_FILE`, the input would look like `google-key-file: ${{ secrets.GOOGLE_KEY_FILE }}`.
 1. In the "Value" field, paste the contents of the key file.
 1. Click the "Add secret" button.
 1. Open the downloaded key file again.
@@ -66,8 +66,6 @@ The sheet name in the Google Sheets spreadsheet used for the memory usage trends
 ## Example usage
 
 ```yaml
-  with:
-    size-report-sketch: Foobar
 - uses: arduino/compile-sketches@master
 # Publish size trends report on each push to the master branch
 - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
