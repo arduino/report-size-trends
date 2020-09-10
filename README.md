@@ -1,12 +1,12 @@
-# libraries/report-size-trends action
+# arduino/report-size-trends action
 
-This action records the memory usage of the sketch specified to the [`arduino/actions/libraries/compile-examples` action](../compile-examples)'s [`size-report-sketch` input](../compile-examples/README.md#size-report-sketch) to a Google Sheets spreadsheet.
+This action records the memory usage of the sketch specified to the [`arduino/compile-examples` action](https://github.com/arduino/compile-sketches)'s [`size-report-sketch` input](https://github.com/arduino/compile-sketches#size-report-sketch) to a Google Sheets spreadsheet.
 
 ## Inputs
 
 ### `sketches-report-path`
 
-Path that contains the JSON formatted sketch data report, as specified to the `arduino/actions/libraries/compile-examples` action's [sketches-report-path input](../compile-examples/README.md#sketches-report-path). Default `"size-deltas-reports"`.
+Path that contains the JSON formatted sketch data report, as specified to the `arduino/compile-examples` action's [sketches-report-path input](https://github.com/arduino/compile-sketches#sketches-report-path). Default `"size-deltas-reports"`.
 
 ### `google-key-file`
 
@@ -66,9 +66,9 @@ The sheet name in the Google Sheets spreadsheet used for the memory usage trends
 ## Example usage
 
 ```yaml
-- uses: arduino/actions/libraries/compile-examples@master
   with:
     size-report-sketch: Foobar
+- uses: arduino/compile-sketches@master
 # Publish size trends report on each push to the master branch
 - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
   uses: arduino/actions/libraries/report-size-trends@master
