@@ -12,11 +12,14 @@ Path that contains the JSON formatted sketch data report, as specified to the `a
 
 ### `google-key-file`
 
-**Required** Contents of the Google key file used to update the size trends report Google Sheets spreadsheet. This should be defined using a [GitHub secret](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
+**Required** Contents of the Google key file used to update the size trends report Google Sheets spreadsheet. This should be defined using a [GitHub encrypted secret](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
+
 1. Open https://console.developers.google.com/project
 1. Click the "Create Project" button.
 1. In the "Project name" field, enter the name you want for your project.
 1. You don't need to select anything from the "Location" menu.
+1. Click the "Create" button.
+1. Wait for project creation to finish.
 1. Click the button with the three horizontal lines at the top left corner of the window.
 1. Hover the mouse pointer over "APIs & Services".
 1. Click "Library".
@@ -38,7 +41,7 @@ Path that contains the JSON formatted sketch data report, as specified to the `a
 1. Open the GitHub page of the repository you are configuring the GitHub Actions workflow for.
 1. Click the "Settings" tab.
 1. From the menu on the left side of the window, click "Secrets".
-1. Click the "Add a new secret" link.
+1. Click the "New secret" button.
 1. In the "Name" field, enter the variable name you want to use for your secret. This secret is what you will use in the `arduino/report-size-trends` action's `google-key-file` input in your GitHub Actions workflow configuration file. For example, if you named the secret `GOOGLE_KEY_FILE`, the input would look like `google-key-file: ${{ secrets.GOOGLE_KEY_FILE }}`.
 1. In the "Value" field, paste the contents of the key file.
 1. Click the "Add secret" button.
@@ -49,9 +52,10 @@ Path that contains the JSON formatted sketch data report, as specified to the `a
 1. Click the "Share" button at the top right corner of the window.
 1. If you haven't already, give your spreadsheet a name.
 1. Paste the `client_email` email address into the "Enter names or email addresses..." field.
+1. Click the email address in the auto-complete dropdown that appears under the email "Enter names or email addresses..." field.
+1. From the permissions menu to the right of the field containing the email, select "Editor"
 1. Uncheck the box next to "Notify people".
-1. Click the "OK" button.
-1. In the "Skip sending invitations?" dialog, click the "OK" button.
+1. Click the "Share" button.
 
 ### `spreadsheet-id`
 
