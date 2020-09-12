@@ -43,18 +43,6 @@ Path that contains the JSON formatted sketch data report, as specified to the `a
 1. From the "Key type" options, select "JSON".
 1. Click the "Continue" button. The .json file containing your private key will be downloaded. Save this somewhere safe.
 
-#### Create key secret
-
-1. Open the downloaded Google API key file you created by following the "Create Google API credentials" instructions above.
-1. Copy the entire contents of the file to the clipboard.
-1. Open the GitHub page of the repository you are configuring the GitHub Actions workflow for.
-1. Click the "Settings" tab.
-1. From the menu on the left side of the window, click "Secrets".
-1. Click the "New secret" button.
-1. In the "Name" field, enter the variable name you want to use for your secret. This secret is what you will use in the `arduino/report-size-trends` action's `google-key-file` input in your GitHub Actions workflow configuration file. For example, if you named the secret `GOOGLE_KEY_FILE`, the input would look like `google-key-file: ${{ secrets.GOOGLE_KEY_FILE }}`.
-1. In the "Value" field, paste the contents of the key file.
-1. Click the "Add secret" button.
-
 #### Configure Google Sheets spreadsheet access
 
 1. Open the downloaded Google API key file you created by following the "Create Google API credentials" instructions above.
@@ -68,6 +56,18 @@ Path that contains the JSON formatted sketch data report, as specified to the `a
 1. From the permissions menu to the right of the field containing the email, select "Editor"
 1. Uncheck the box next to "Notify people".
 1. Click the "Share" button.
+
+#### Create key secret
+
+1. Open the downloaded Google API key file you created by following the "Create Google API credentials" instructions above.
+1. Copy the entire contents of the file to the clipboard.
+1. Open the GitHub page of the repository you are configuring the GitHub Actions workflow for.
+1. Click the "Settings" tab.
+1. From the menu on the left side of the window, click "Secrets".
+1. Click the "New secret" button.
+1. In the "Name" field, enter the variable name you want to use for your secret. This secret is what you will use in the `arduino/report-size-trends` action's `google-key-file` input in your GitHub Actions workflow configuration file. For example, if you named the secret `GOOGLE_KEY_FILE`, the input would look like `google-key-file: ${{ secrets.GOOGLE_KEY_FILE }}`.
+1. In the "Value" field, paste the contents of the key file.
+1. Click the "Add secret" button.
 
 ### `spreadsheet-id`
 
