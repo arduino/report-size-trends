@@ -1,5 +1,9 @@
 # `arduino/report-size-trends` action
 
+[![Tests](https://github.com/arduino/report-size-trends/workflows/libraries/report-size-trends%20workflow/badge.svg)](https://github.com/arduino/report-size-trends/actions?workflow=libraries/report-size-trends+workflow)
+[![Spell Check](https://github.com/arduino/report-size-trends/workflows/Spell%20Check/badge.svg)](https://github.com/arduino/report-size-trends/actions?workflow=Spell+Check)
+[![codecov](https://codecov.io/gh/arduino/report-size-trends/branch/master/graph/badge.svg)](https://codecov.io/gh/arduino/report-size-trends)
+
 This action records the memory usage of the [Arduino](https://www.arduino.cc/) sketch specified to the [`arduino/compile-examples` action](https://github.com/arduino/compile-sketches)'s [`size-report-sketch` input](https://github.com/arduino/compile-sketches#size-report-sketch) to a [Google Sheets](https://www.google.com/sheets/about/) spreadsheet.
 
 ## Inputs
