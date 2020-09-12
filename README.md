@@ -1,6 +1,6 @@
-# arduino/report-size-trends action
+# `arduino/report-size-trends` action
 
-This action records the memory usage of the sketch specified to the [`arduino/compile-examples` action](https://github.com/arduino/compile-sketches)'s [`size-report-sketch` input](https://github.com/arduino/compile-sketches#size-report-sketch) to a Google Sheets spreadsheet.
+This action records the memory usage of the [Arduino](https://www.arduino.cc/) sketch specified to the [`arduino/compile-examples` action](https://github.com/arduino/compile-sketches)'s [`size-report-sketch` input](https://github.com/arduino/compile-sketches#size-report-sketch) to a [Google Sheets](https://www.google.com/sheets/about/) spreadsheet.
 
 ## Inputs
 
