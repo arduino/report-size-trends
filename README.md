@@ -6,7 +6,9 @@ This action records the memory usage of the sketch specified to the [`arduino/co
 
 ### `sketches-report-path`
 
-Path that contains the JSON formatted sketch data report, as specified to the `arduino/compile-examples` action's [sketches-report-path input](https://github.com/arduino/compile-sketches#sketches-report-path). Default `"size-deltas-reports"`.
+Path that contains the JSON formatted sketch data report, as specified to the `arduino/compile-examples` action's [sketches-report-path input](https://github.com/arduino/compile-sketches#sketches-report-path).
+
+**Default**: `"size-deltas-reports"`
 
 ### `google-key-file`
 
@@ -61,7 +63,9 @@ In this example, the spreadsheet ID is `15WOp3vp-6AnTnWlNWaNWNl61Fe_j8UJhIKE0rVd
 
 ### `sheet-name`
 
-The sheet name in the Google Sheets spreadsheet used for the memory usage trends report. Default `"Sheet1"`.
+The sheet name in the Google Sheets spreadsheet used for the memory usage trends report.
+
+**Default**: `"Sheet1"`
 
 ## Example usage
 
