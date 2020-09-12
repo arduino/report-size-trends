@@ -14,6 +14,8 @@ Path that contains the JSON formatted sketch data report, as specified to the `a
 
 **Required** Contents of the Google key file used to update the size trends report Google Sheets spreadsheet. This should be defined using a [GitHub encrypted secret](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
 
+#### Create Google API credentials
+
 1. Open https://console.developers.google.com/project
 1. Click the "Create Project" button.
 1. In the "Project name" field, enter the name you want for your project.
@@ -36,7 +38,10 @@ Path that contains the JSON formatted sketch data report, as specified to the `a
 1. From the "Role" menu, select "Project > Editor".
 1. From the "Key type" options, select "JSON".
 1. Click the "Continue" button. The .json file containing your private key will be downloaded. Save this somewhere safe.
-1. Open the downloaded file.
+
+#### Create key secret
+
+1. Open the downloaded Google API key file you created by following the "Create Google API credentials" instructions above.
 1. Copy the entire contents of the file to the clipboard.
 1. Open the GitHub page of the repository you are configuring the GitHub Actions workflow for.
 1. Click the "Settings" tab.
@@ -45,7 +50,10 @@ Path that contains the JSON formatted sketch data report, as specified to the `a
 1. In the "Name" field, enter the variable name you want to use for your secret. This secret is what you will use in the `arduino/report-size-trends` action's `google-key-file` input in your GitHub Actions workflow configuration file. For example, if you named the secret `GOOGLE_KEY_FILE`, the input would look like `google-key-file: ${{ secrets.GOOGLE_KEY_FILE }}`.
 1. In the "Value" field, paste the contents of the key file.
 1. Click the "Add secret" button.
-1. Open the downloaded key file again.
+
+#### Configure Google Sheets spreadsheet access
+
+1. Open the downloaded Google API key file you created by following the "Create Google API credentials" instructions above.
 1. Copy the email address shown in the `client_email` field.
 1. Open Google Sheets: https://docs.google.com/spreadsheets
 1. Under "Start a new spreadsheet", click "Blank".
