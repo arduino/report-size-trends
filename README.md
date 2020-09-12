@@ -66,10 +66,10 @@ The sheet name in the Google Sheets spreadsheet used for the memory usage trends
 ## Example usage
 
 ```yaml
-- uses: arduino/compile-sketches@master
-# Publish size trends report on each push to the master branch
-- if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-  uses: arduino/actions/libraries/report-size-trends@master
+- uses: arduino/compile-sketches@main
+# Publish size trends report on each push to the main branch
+- if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  uses: arduino/report-size-trends@main
   with:
     google-key-file: ${{ secrets.GOOGLE_KEY_FILE }}
     spreadsheet-id: 15WOp3vp-6AnTnWlNWaNWNl61Fe_j8UJhIKE0rVdV-7U
