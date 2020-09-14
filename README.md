@@ -6,6 +6,22 @@
 
 This action records the memory usage of the [Arduino](https://www.arduino.cc/) sketches compiled by the [`arduino/compile-examples` action](https://github.com/arduino/compile-sketches) to a [Google Sheets](https://www.google.com/sheets/about/) spreadsheet.
 
+## Table of contents
+
+<!-- toc -->
+
+- [Inputs](#inputs)
+  - [`sketches-report-path`](#sketches-report-path)
+  - [`google-key-file`](#google-key-file)
+    - [Create Google API credentials](#create-google-api-credentials)
+    - [Configure Google Sheets spreadsheet access](#configure-google-sheets-spreadsheet-access)
+    - [Create key secret](#create-key-secret)
+  - [`spreadsheet-id`](#spreadsheet-id)
+  - [`sheet-name`](#sheet-name)
+- [Example usage](#example-usage)
+
+<!-- tocstop -->
+
 ## Inputs
 
 ### `sketches-report-path`
