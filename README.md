@@ -1,20 +1,47 @@
-# arduino/report-size-trends action
+# `arduino/report-size-trends` action
 
-This action records the memory usage of the sketch specified to the [`arduino/compile-examples` action](https://github.com/arduino/compile-sketches)'s [`size-report-sketch` input](https://github.com/arduino/compile-sketches#size-report-sketch) to a Google Sheets spreadsheet.
+[![Tests](https://github.com/arduino/report-size-trends/workflows/libraries/report-size-trends%20workflow/badge.svg)](https://github.com/arduino/report-size-trends/actions?workflow=libraries/report-size-trends+workflow)
+[![Spell Check](https://github.com/arduino/report-size-trends/workflows/Spell%20Check/badge.svg)](https://github.com/arduino/report-size-trends/actions?workflow=Spell+Check)
+[![codecov](https://codecov.io/gh/arduino/report-size-trends/branch/master/graph/badge.svg)](https://codecov.io/gh/arduino/report-size-trends)
+
+This action records the memory usage of the [Arduino](https://www.arduino.cc/) sketches compiled by the [`arduino/compile-examples` action](https://github.com/arduino/compile-sketches) to a [Google Sheets](https://www.google.com/sheets/about/) spreadsheet.
+
+## Table of contents
+
+<!-- toc -->
+
+- [Inputs](#inputs)
+  - [`sketches-report-path`](#sketches-report-path)
+  - [`google-key-file`](#google-key-file)
+    - [Create Google API credentials](#create-google-api-credentials)
+    - [Configure Google Sheets spreadsheet access](#configure-google-sheets-spreadsheet-access)
+    - [Create key secret](#create-key-secret)
+  - [`spreadsheet-id`](#spreadsheet-id)
+  - [`sheet-name`](#sheet-name)
+- [Example usage](#example-usage)
+
+<!-- tocstop -->
 
 ## Inputs
 
 ### `sketches-report-path`
 
-Path that contains the JSON formatted sketch data report, as specified to the `arduino/compile-examples` action's [sketches-report-path input](https://github.com/arduino/compile-sketches#sketches-report-path). Default `"size-deltas-reports"`.
+Path that contains the sketches report, as specified to the `arduino/compile-examples` action's [sketches-report-path input](https://github.com/arduino/compile-sketches#sketches-report-path).
+
+**Default**: `"size-deltas-reports"`
 
 ### `google-key-file`
 
-**Required** Contents of the Google key file used to update the size trends report Google Sheets spreadsheet. This should be defined using a [GitHub secret](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
+**Required** Contents of the Google key file used to update the size trends report Google Sheets spreadsheet. This should be defined using a [GitHub encrypted secret](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
+
+#### Create Google API credentials
+
 1. Open https://console.developers.google.com/project
 1. Click the "Create Project" button.
 1. In the "Project name" field, enter the name you want for your project.
 1. You don't need to select anything from the "Location" menu.
+1. Click the "Create" button.
+1. Wait for project creation to finish.
 1. Click the button with the three horizontal lines at the top left corner of the window.
 1. Hover the mouse pointer over "APIs & Services".
 1. Click "Library".
@@ -31,25 +58,32 @@ Path that contains the JSON formatted sketch data report, as specified to the `a
 1. From the "Role" menu, select "Project > Editor".
 1. From the "Key type" options, select "JSON".
 1. Click the "Continue" button. The .json file containing your private key will be downloaded. Save this somewhere safe.
-1. Open the downloaded file.
-1. Copy the entire contents of the file to the clipboard.
-1. Open the GitHub page of the repository you are configuring the GitHub Actions workflow for.
-1. Click the "Settings" tab.
-1. From the menu on the left side of the window, click "Secrets".
-1. Click the "Add a new secret" link.
-1. In the "Name" field, enter the variable name you want to use for your secret. This secret is what you will use in the `arduino/report-size-trends` action's `google-key-file` input in your GitHub Actions workflow configuration file. For example, if you named the secret `GOOGLE_KEY_FILE`, the input would look like `google-key-file: ${{ secrets.GOOGLE_KEY_FILE }}`.
-1. In the "Value" field, paste the contents of the key file.
-1. Click the "Add secret" button.
-1. Open the downloaded key file again.
+
+#### Configure Google Sheets spreadsheet access
+
+1. Open the downloaded Google API key file you created by following the "Create Google API credentials" instructions above.
 1. Copy the email address shown in the `client_email` field.
 1. Open Google Sheets: https://docs.google.com/spreadsheets
 1. Under "Start a new spreadsheet", click "Blank".
 1. Click the "Share" button at the top right corner of the window.
 1. If you haven't already, give your spreadsheet a name.
 1. Paste the `client_email` email address into the "Enter names or email addresses..." field.
+1. Click the email address in the auto-complete dropdown that appears under the email "Enter names or email addresses..." field.
+1. From the permissions menu to the right of the field containing the email, select "Editor"
 1. Uncheck the box next to "Notify people".
-1. Click the "OK" button.
-1. In the "Skip sending invitations?" dialog, click the "OK" button.
+1. Click the "Share" button.
+
+#### Create key secret
+
+1. Open the downloaded Google API key file you created by following the "Create Google API credentials" instructions above.
+1. Copy the entire contents of the file to the clipboard.
+1. Open the GitHub page of the repository you are configuring the GitHub Actions workflow for.
+1. Click the "Settings" tab.
+1. From the menu on the left side of the window, click "Secrets".
+1. Click the "New secret" button.
+1. In the "Name" field, enter the variable name you want to use for your secret. This secret is what you will use in the `arduino/report-size-trends` action's `google-key-file` input in your GitHub Actions workflow configuration file. For example, if you named the secret `GOOGLE_KEY_FILE`, the input would look like `google-key-file: ${{ secrets.GOOGLE_KEY_FILE }}`.
+1. In the "Value" field, paste the contents of the key file.
+1. Click the "Add secret" button.
 
 ### `spreadsheet-id`
 
@@ -61,15 +95,17 @@ In this example, the spreadsheet ID is `15WOp3vp-6AnTnWlNWaNWNl61Fe_j8UJhIKE0rVd
 
 ### `sheet-name`
 
-The sheet name in the Google Sheets spreadsheet used for the memory usage trends report. Default `"Sheet1"`.
+The sheet name in the Google Sheets spreadsheet used for the memory usage trends report.
+
+**Default**: `"Sheet1"`
 
 ## Example usage
 
 ```yaml
-- uses: arduino/compile-sketches@master
-# Publish size trends report on each push to the master branch
-- if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-  uses: arduino/actions/libraries/report-size-trends@master
+- uses: arduino/compile-sketches@main
+# Publish size trends report on each push to the main branch
+- if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  uses: arduino/report-size-trends@main
   with:
     google-key-file: ${{ secrets.GOOGLE_KEY_FILE }}
     spreadsheet-id: 15WOp3vp-6AnTnWlNWaNWNl61Fe_j8UJhIKE0rVdV-7U
