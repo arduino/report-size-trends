@@ -28,7 +28,7 @@ This action records the memory usage of the [Arduino](https://www.arduino.cc/) s
 
 Path that contains the sketches report, as specified to the `arduino/compile-examples` action's [sketches-report-path input](https://github.com/arduino/compile-sketches#sketches-report-path).
 
-**Default**: `"size-deltas-reports"`
+**Default**: `"sketches-reports"`
 
 ### `google-key-file`
 

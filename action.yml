@@ -4,7 +4,7 @@ inputs:
   sketches-report-path:
     description: 'Path the arduino/compile-examples action saved the sketch data report to'
     required: false
-    default: 'size-deltas-reports'
+    default: 'sketches-reports'
   google-key-file:
     description: 'Google key file used to update the size trends report Google Sheets spreadsheet.'
     required: true
