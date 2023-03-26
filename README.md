@@ -4,6 +4,12 @@
 [![Spell Check](https://github.com/arduino/report-size-trends/workflows/Spell%20Check/badge.svg)](https://github.com/arduino/report-size-trends/actions?workflow=Spell+Check)
 [![codecov](https://codecov.io/gh/arduino/report-size-trends/branch/master/graph/badge.svg)](https://codecov.io/gh/arduino/report-size-trends)
 
+---
+
+**⚠ This project is no longer maintained. ⚠**
+
+---
+
 This action records the memory usage of the [Arduino](https://www.arduino.cc/) sketches compiled by the [`arduino/compile-examples` action](https://github.com/arduino/compile-sketches) to a [Google Sheets](https://www.google.com/sheets/about/) spreadsheet.
 
 ## Table of contents
